@@ -6,6 +6,8 @@ const port = 8080;
 
 // 데이터베이스 연결 설정
 const db = new sqlite3.Database('books.db');
+// public static 설정
+app.use(express.static('public'));
 
 // 라우트 설정
 app.get('/books', (req, res) => {
