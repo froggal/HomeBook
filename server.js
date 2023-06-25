@@ -20,6 +20,30 @@ app.get('/books', (req, res) => {
   });
 });
 
+// 이전에 작성한 코드...
+
+// 라우트 설정
+app.get('/books/search', (req, res) => {
+    const searchQuery = req.query.q;
+  
+    // 데이터베이스에서 검색 쿼리 실행
+    const sql = `SELECT * FROM books WHERE title LIKE '%${searchQuery}%' OR author LIKE '%${searchQuery}%'`;
+    db.all(sql, (err, rows) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send('Internal Server Error');
+      } else {
+        res.json(rows);
+      }
+    });
+  });
+  
+  // 서버 시작
+  app.listen(port, () => {
+    console.log(`Server listening at http://localhost:${port}`);
+  });
+  
+
 // 서버 시작
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
