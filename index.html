@@ -11,5 +11,26 @@
     <input type="text" name="q" placeholder="검색어 입력">
     <input type="submit">
   </form>  
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>제목</th>
+        <th>저자</th>
+        <th>위치</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 반복문을 통해 검색 결과 데이터를 테이블에 추가 -->
+      <% for (let i = 0; i < results.length; i++) { %>
+        <tr>
+          <td><%= results[i].id %></td>
+          <td><%= results[i].title %></td>
+          <td><%= results[i].author %></td>
+          <td><%= results[i].location %></td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
 </body>
 </html>
