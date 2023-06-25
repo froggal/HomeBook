@@ -23,6 +23,24 @@ app.get('/books', (req, res) => {
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
   });
+
+  // 라우트 설정 - 책 추가
+app.post('/books/add', (req, res) => {
+    const { title, author, location } = req.body;
+  
+    // 데이터베이스에 새로운 책 추가
+    const sql = `INSERT INTO books (title, author, location) VALUES (?, ?, ?)`;
+    db.run(sql, [title, author, location], function (err) {
+      if (err) {
+        console.error(err);
+        res.status(500).send('Internal Server Error');
+      } else {
+        // 책 추가 성공
+        res.send('Book added successfully');
+      }
+    });
+  });
+  
 // 이전에 작성한 코드...
 
 // 라우트 설정
