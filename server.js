@@ -8,6 +8,8 @@ const port = 8080;
 const db = new sqlite3.Database('books.db');
 // public static 설정
 app.use(express.static('public'));
+app.use(express.static('public', { 'Content-Type': 'text/javascript' }));
+
 
 // 라우트 설정
 app.get('/books', (req, res) => {
