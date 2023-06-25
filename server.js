@@ -9,6 +9,8 @@ const db = new sqlite3.Database('books.db');
 // public static 설정
 app.use(express.static('public'));
 app.use(express.static('public', { 'Content-Type': 'text/javascript' }));
+app.use(express.static('public', { 'Content-Type': 'text/css' }))
+app.use(express.static(__dirname + '/public'));
 
 
 // 라우트 설정
