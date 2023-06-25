@@ -20,6 +20,9 @@ app.get('/books', (req, res) => {
   });
 });
 
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+  });
 // 이전에 작성한 코드...
 
 // 라우트 설정
