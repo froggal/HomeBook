@@ -42,9 +42,3 @@ app.get('/books/search', (req, res) => {
   app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
   });
-  
-
-// 서버 시작
-app.listen(port, () => {
-  console.log(`Server listening at http://localhost:${port}`);
-});
