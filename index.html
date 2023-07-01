@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>도서검색시스템</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>도서검색시스템</h1>
+  <form action="/books/search" method="get">
+    <input type="text" name="q" placeholder="검색어 입력">
+    <input type="submit">
+  </form>  
+
+  <form id="addBookForm">
+    <input type="text" name="title" placeholder="Title">
+    <input type="text" name="author" placeholder="Author">
+    <input type="text" name="location" placeholder="Location">
+    <button type="submit">책 추가</button>
+  </form>
+  <script src="/client_app.js"></script>
+</body>
+</html>
