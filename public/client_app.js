@@ -1,20 +1,33 @@
-const form = document.getElementById('addBookForm');
+// 클라이언트 측 JavaScript 코드 (client_app.js)
 
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
+const addBookForm = document.getElementById('addBookForm');
 
-  const formData = new FormData(form);
+addBookForm.addEventListener('submit', (event) => {
+  event.preventDefault();
 
+  // 폼 입력값 가져오기
+  const title = event.target.elements.title.value;
+  const author = event.target.elements.author.value;
+  const location = event.target.elements.location.value;
+
+  // 서버로 데이터 전송
   fetch('/books/add', {
     method: 'POST',
-    body: formData
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ title, author, location })
   })
-    .then(response => response.text())
-    .then(data => {
-      console.log(data); // 응답 데이터 확인
-      // 책 추가가 성공하면 필요한 동작을 수행
-    })
-    .catch(error => {
-      console.error('An error occurred:', error);
-    });
+  .then((response) => {
+    if (response.ok) {
+      console.log('Book added successfully');
+      // 페이지 새로고침
+      location.reload();
+    } else {
+      console.error('Failed to add the book');
+    }
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
 });

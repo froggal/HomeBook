@@ -64,12 +64,21 @@ app.get('/books/search', (req, res) => {
 });
 
 // 서버 시작
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });
 
 // 데이터베이스 연결 종료
 process.on('SIGINT', () => {
-  db.close();
-  process.exit();
+  db.close((err) => {
+    if (err) {
+      console.error(err.message);
+    } else {
+      console.log('Database connection closed');
+    }
+    server.close(() => {
+      console.log('Server stopped');
+      process.exit();
+    });
+  });
 });
