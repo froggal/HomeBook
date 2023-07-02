@@ -9,7 +9,8 @@ const path = require('path');
 const db = new sqlite3.Database('books.db');
 
 // public static 설정
-app.use(express.static(path.join(__dirname, 'public')));
+const publicPath = path.join(__dirname, 'public');
+app.use(express.static(publicPath));
 
 // JSON 데이터 파싱을 위한 미들웨어 설정
 app.use(express.json());
@@ -28,7 +29,7 @@ app.get('/books', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // 라우트 설정 - 책 추가
@@ -88,7 +89,6 @@ app.get('/books/search', (req, res) => {
     }
   });
 });
-
 
 // 서버 시작
 const server = app.listen(port, () => {
