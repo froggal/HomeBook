@@ -44,7 +44,7 @@ app.post('/books/add', (req, res) => {
       res.status(500).send('Internal Server Error');
     } else {
       // 책 추가 성공
-      res.send('Book added successfully');
+      res.send('책 추가가 완료되었습니다!');
     }
   });
 });
