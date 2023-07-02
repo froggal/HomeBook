@@ -20,11 +20,11 @@ addBookForm.addEventListener('submit', (event) => {
   })
   .then((response) => {
     if (response.ok) {
-      console.log('Book added successfully');
+      alert('${author} 작가의 ${title}이 ${location}에 추가가 완료되었습니다!')
       // 페이지 새로고침
       location.reload();
     } else {
-      console.error('Failed to add the book');
+      alert('책 추가가 실패되었습니다. 입력칸이 비지는 않았는지 확인해 주십시오. ');
     }
   })
   .catch((error) => {
