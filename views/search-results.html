@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>검색 결과</title>
+    <link rel="stylesheet" href="/public/search-results-style.css">
+</head>
+<body>
+    <h1>검색 결과</h1>
+    <% for (const result of results) { %>
+      <div class="search-result">
+        <h3><%= "제목: " + result['제목'] %></h3>
+        <p><%= "저자: " + result['저자'] %></p>
+        <p><%= "위치: " + result['위치'] %></p>
+      </div>
+    <% } %>
+</body>
+</html>
