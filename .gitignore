@@ -1,2 +1,3 @@
+*.db
+*.sql
 books.db
-books.sql
